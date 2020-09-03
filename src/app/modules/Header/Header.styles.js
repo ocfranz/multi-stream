@@ -1,9 +1,14 @@
 import styled from "styled-components";
 
-const HeaderWrapper = styled.div`
+const HeaderStyled = styled.div`
     display: flex;
     width: 100%;
-    padding: 20px 0px;
+    height : 60px;
+    align-items: center;
 `;
+const HeaderWrapper = styled.div`
 
-export { HeaderWrapper };
+`
+
+
+export { HeaderStyled, HeaderWrapper };

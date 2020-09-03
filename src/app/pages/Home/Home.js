@@ -1,26 +1,36 @@
 import React from "react";
-import { HomeWrapper } from "./Home.styles";
+import {
+    PageWrapper,
+    HomeStyled,
+    HomeWrapper,
+    HomeVideoBig,
+    HomeVideoList,
+} from "./Home.styles";
+import { PageContent } from "../../components/Page/Page.styles";
 import Grid from "../../components/Grid";
-import Header from "../../modules/Header";
 import VideoPlayer from "../../components/VideoPlayer";
+import Header from "../../modules/Header";
+import Sidebar from "../../modules/Sidebar";
 const Home = ({}) => {
     return (
-        <Grid
-            children={
-                <>
-                    <Header />
-                    <HomeWrapper>
-                        <div>
-                        <VideoPlayer />
-                        </div>
-                        <div>
-                            
-                        </div>
-                        
-                    </HomeWrapper>
-                </>
-            }
-        ></Grid>
+        <PageWrapper>
+            <PageContent>
+                <Header />
+                <HomeStyled>
+                    <Grid
+                        children={
+                            <HomeWrapper>
+                                <HomeVideoBig>
+                                    <VideoPlayer />
+                                </HomeVideoBig>
+                                <HomeVideoList></HomeVideoList>
+                            </HomeWrapper>
+                        }
+                    />
+                </HomeStyled>
+            </PageContent>
+            <Sidebar />
+        </PageWrapper>
     );
 };
 

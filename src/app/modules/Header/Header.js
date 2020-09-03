@@ -1,11 +1,18 @@
 import React from "react";
-import { HeaderWrapper } from "./Header.styles";
+import { HeaderStyled, HeaderWrapper } from "./Header.styles";
 import Brand from "../../components/Brand";
+import Grid from "../../components/Grid";
 const Header = () => {
     return (
-        <HeaderWrapper>
-            <Brand />
-        </HeaderWrapper>
+        <HeaderStyled>
+            <Grid
+                children={
+                    <HeaderWrapper>
+                        <Brand />
+                    </HeaderWrapper>
+                }
+            />
+        </HeaderStyled>
     );
 };
 
