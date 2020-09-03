@@ -10,7 +10,7 @@ import { PageContent } from "../../components/Page/Page.styles";
 import Grid from "../../components/Grid";
 import VideoPlayer from "../../components/VideoPlayer";
 import Header from "../../modules/Header";
-import Sidebar from "../../modules/Sidebar";
+import Nav from "../../modules/Nav";
 const Home = ({}) => {
     return (
         <PageWrapper>
@@ -29,7 +29,7 @@ const Home = ({}) => {
                     />
                 </HomeStyled>
             </PageContent>
-            <Sidebar />
+            <Nav />
         </PageWrapper>
     );
 };
