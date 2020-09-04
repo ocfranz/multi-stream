@@ -14,5 +14,10 @@ const NavHeading = styled.div`
     display: flex;
     align-items: center;
 `;
+const NavItemsWrapper = styled.div`
+    display: flex;
+    justify-content: center;
+    padding: 10px 0px 0px 0px;
+`;
 
-export { NavStyled, NavWrapper, NavHeading };
+export { NavStyled, NavWrapper, NavHeading, NavItemsWrapper };
