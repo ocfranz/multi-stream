@@ -9,7 +9,6 @@ const ModalStyled = styled.div`
 const ModalDialog = styled.div`
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
 `;
 const ModalContent = styled.div`
     position: absolute;
@@ -19,9 +18,27 @@ const ModalContent = styled.div`
     background-color: #251b33;
     color: #000000;
     width: 25%;
+    -webkit-box-shadow: -5px 1px 11px -1px rgba(49, 35, 67, 1);
+    -moz-box-shadow: -5px 1px 11px -1px rgba(49, 35, 67, 1);
+    box-shadow: -5px 1px 11px -1px rgba(49, 35, 67, 1);
 `;
 const ModalContentWrapper = styled.div`
     padding: 20px 20px;
     color: #ffffff;
 `;
-export { ModalStyled, ModalDialog, ModalContent, ModalContentWrapper };
+const ModalListWrapper = styled.div`
+    padding: 20px 0px;
+    color: #ffffff;
+`;
+const ListWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+`;
+export {
+    ModalStyled,
+    ModalDialog,
+    ModalContent,
+    ModalContentWrapper,
+    ModalListWrapper,
+    ListWrapper,
+};

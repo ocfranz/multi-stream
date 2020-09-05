@@ -16,6 +16,19 @@ const GlobalStyles = createGlobalStyle`
     *{
         font-family: 'DM Sans', sans-serif;
     } 
+    ::placeholder { 
+        color: #ffffff;
+        opacity: 0.6; 
+      }
+      
+      :-ms-input-placeholder { 
+        color: #ffffff;
+      }
+      
+      ::-ms-input-placeholder { 
+        color: #ffffff;
+      }
+      
 `;
 export default GlobalStyles;
 /**

@@ -6,13 +6,13 @@ const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const common = require('./webpack.common.js');
 
 const BUILD_DIR = path.resolve(__dirname, "src/public");
-
+const SRC= path.resolve(__dirname, "src");
 var config = {
   devtool: 'source-map',
   watch: true,
   mode: 'development',
   devServer: {
-    contentBase: BUILD_DIR,
+    contentBase: SRC,
     watchOptions : {
       poll : true
     },
@@ -20,13 +20,6 @@ var config = {
     hot: true,
     host: "localhost",
     port: 5000, 
-    //public : '0.0.0.0:80',
-    proxy: {
-      "^/api/*": {
-        target: "http://localhost:3000/",
-        secure: false
-      }
-    }
   },
   plugins:[
     new BundleAnalyzerPlugin(),

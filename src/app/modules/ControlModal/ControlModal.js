@@ -5,8 +5,11 @@ import {
     ModalDialog,
     ModalContent,
     ModalContentWrapper,
+    ModalListWrapper,
+    ListWrapper,
 } from "./ControlModal.styles";
 import Input from "../../components/Input";
+import ListItem from "../../components/ListItem";
 import Heading from "../../components/Heading";
 const Modal = ({}) => {
     const handleStreamNameChange = (event) => {};
@@ -20,6 +23,13 @@ const Modal = ({}) => {
                             id="stream-name"
                             onChange={handleStreamNameChange}
                         />
+                        <ModalListWrapper>
+                            <Heading children="List" />
+                            <ListWrapper>
+                                <ListItem name="staryuuki"/>
+                                <ListItem />
+                            </ListWrapper>
+                        </ModalListWrapper>
                     </ModalContentWrapper>
                 </ModalContent>
             </ModalDialog>
