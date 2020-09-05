@@ -6,6 +6,8 @@ import {
     HomeVideoBig,
     HomeVideoList,
 } from "./Home.styles";
+import { useSelector, useDispatch } from "react-redux";
+
 import { PageContent } from "../../components/Page/Page.styles";
 import Grid from "../../components/Grid";
 import VideoPlayer from "../../components/VideoPlayer";
@@ -13,6 +15,10 @@ import Header from "../../modules/Header";
 import Nav from "../../modules/Nav";
 import ControlModal from "../../modules/ControlModal";
 const Home = ({}) => {
+    const visibleModalControl = useSelector(
+        (state) => state.uiReducer.showModal
+    );
+
     return (
         <PageWrapper>
             <PageContent>
@@ -31,7 +37,7 @@ const Home = ({}) => {
                 </HomeStyled>
             </PageContent>
             <Nav />
-            <ControlModal />
+            <ControlModal show={visibleModalControl} />
         </PageWrapper>
     );
 };

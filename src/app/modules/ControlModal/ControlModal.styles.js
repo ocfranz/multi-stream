@@ -4,6 +4,7 @@ const ModalStyled = styled.div`
     width: calc(100% - 70px);
     height: 100%;
     position: absolute;
+    display: ${(props) => (props.show ? "block" : "none")};
 `;
 
 const ModalDialog = styled.div`

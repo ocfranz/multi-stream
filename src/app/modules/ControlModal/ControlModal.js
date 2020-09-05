@@ -11,10 +11,10 @@ import {
 import Input from "../../components/Input";
 import ListItem from "../../components/ListItem";
 import Heading from "../../components/Heading";
-const Modal = ({}) => {
+const Modal = ({ show }) => {
     const handleStreamNameChange = (event) => {};
     return (
-        <ModalStyled>
+        <ModalStyled show={show}>
             <ModalDialog>
                 <ModalContent>
                     <ModalContentWrapper>
@@ -26,7 +26,7 @@ const Modal = ({}) => {
                         <ModalListWrapper>
                             <Heading children="List" />
                             <ListWrapper>
-                                <ListItem name="staryuuki"/>
+                                <ListItem name="staryuuki" />
                                 <ListItem />
                             </ListWrapper>
                         </ModalListWrapper>
@@ -35,5 +35,11 @@ const Modal = ({}) => {
             </ModalDialog>
         </ModalStyled>
     );
+};
+Modal.defaultProps = {
+    show: false,
+};
+Modal.propTypes = {
+    show: PropTypes.bool,
 };
 export default Modal;
