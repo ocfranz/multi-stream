@@ -1,13 +1,22 @@
 import React from "react";
-import { AvatarStyled } from "./Avatar.styles";
+import PropTypes from "prop-types";
+import { AvatarStyled, AvatarText } from "./Avatar.styles";
 
-const Avatar = ({}) => {
+const Avatar = ({ src }) => {
     return (
-        <AvatarStyled
-            src="https://randomuser.me/api/portraits/women/44.jpg"
-            alt="Avatar user"
-        />
+        <>
+            {src === undefined && <AvatarText>A</AvatarText>}
+            {typeof src === "string" && (
+                <AvatarStyled
+                    src="https://randomuser.me/api/portraits/women/44.jpg"
+                    alt="Avatar user"
+                />
+            )}
+        </>
     );
 };
 
+Avatar.propTypes = {
+    src: PropTypes.string,
+};
 export default Avatar;

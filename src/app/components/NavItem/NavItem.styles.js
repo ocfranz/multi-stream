@@ -10,8 +10,9 @@ const NavItemStyled = styled.button`
     cursor: pointer;
     background-color: #4f386c;
     display: flex;
-    align-item: center;
     justify-content: center;
+    align-items: center;
+    margin: 0px 0px 15px 0px;
     &:focus {
         outline: none;
         box-shadow: none;

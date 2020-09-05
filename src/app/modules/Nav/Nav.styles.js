@@ -17,6 +17,7 @@ const NavHeading = styled.div`
 const NavItemsWrapper = styled.div`
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     padding: 10px 0px 0px 0px;
 `;
 

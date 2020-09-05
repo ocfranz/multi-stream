@@ -11,6 +11,7 @@ import Grid from "../../components/Grid";
 import VideoPlayer from "../../components/VideoPlayer";
 import Header from "../../modules/Header";
 import Nav from "../../modules/Nav";
+import ControlModal from "../../modules/ControlModal";
 const Home = ({}) => {
     return (
         <PageWrapper>
@@ -30,6 +31,7 @@ const Home = ({}) => {
                 </HomeStyled>
             </PageContent>
             <Nav />
+            <ControlModal />
         </PageWrapper>
     );
 };

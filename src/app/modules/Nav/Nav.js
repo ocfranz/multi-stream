@@ -7,6 +7,9 @@ import {
 } from "./Nav.styles";
 import Avatar from "../../components/Atavar";
 import NavItem from "../../components/NavItem";
+
+import AddIcon from "./AddIcon";
+import SettingIcon from "./SettingIcon";
 const Sidebar = () => {
     return (
         <NavStyled>
@@ -15,8 +18,8 @@ const Sidebar = () => {
                     <Avatar />
                 </NavHeading>
                 <NavItemsWrapper>
-                    <NavItem />
-
+                    <NavItem children={<AddIcon color="#dbdbdb" />} />
+                    <NavItem children={<SettingIcon color="#dbdbdb" />} />
                 </NavItemsWrapper>
             </NavWrapper>
         </NavStyled>
