@@ -1,15 +1,20 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { InputStyled, InputContainer } from "./Input.styles";
-const SimpleInput = ({ type, id, placeholder, onChange }) => {
+const SimpleInput = ({ type, value, id, placeholder, onKeyDown, onChange }) => {
+    const handleOnChange = (event) => {
+        onChange(event.target.value);
+    };
     return (
         <InputContainer>
             <label for={id}></label>
             <InputStyled
                 id={id}
                 type={type}
+                value={value}
                 placeholder={placeholder}
-                onChange={onChange}
+                onKeyDown={onKeyDown}
+                onChange={handleOnChange}
             />
         </InputContainer>
     );

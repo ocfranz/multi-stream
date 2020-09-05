@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
+import { useSelector, useDispatch } from "react-redux";
+import { ADD_STREAM } from "../../actions/actionTypes";
 import {
     ModalStyled,
     ModalDialog,
@@ -11,8 +13,24 @@ import {
 import Input from "../../components/Input";
 import ListItem from "../../components/ListItem";
 import Heading from "../../components/Heading";
+
 const Modal = ({ show }) => {
-    const handleStreamNameChange = (event) => {};
+    const [inputValue, setInputValue] = useState("");
+    const dispatch = useDispatch();
+    const streams = useSelector((state) => state.streamReducer.streams);
+
+    const handleStreamNameChange = (event) => {
+        if (event.keyCode === 13) {
+            const newStream = {
+                name: inputValue,
+                muted: false,
+                hidden: false,
+            };
+            setInputValue("");
+            dispatch({ type: ADD_STREAM, payload: newStream });
+        }
+    };
+
     return (
         <ModalStyled show={show}>
             <ModalDialog>
@@ -21,13 +39,16 @@ const Modal = ({ show }) => {
                         <Heading children="Type a streamer name" />
                         <Input
                             id="stream-name"
-                            onChange={handleStreamNameChange}
+                            value={inputValue}
+                            onChange={setInputValue}
+                            onKeyDown={handleStreamNameChange}
                         />
                         <ModalListWrapper>
                             <Heading children="List" />
                             <ListWrapper>
-                                <ListItem name="staryuuki" />
-                                <ListItem />
+                                {streams.map((item, index) => (
+                                    <ListItem name={item.name} key={index} />
+                                ))}
                             </ListWrapper>
                         </ModalListWrapper>
                     </ModalContentWrapper>

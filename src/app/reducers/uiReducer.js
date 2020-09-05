@@ -1,11 +1,12 @@
+import { TOGGLE_MODAL_CONTROL } from "../actions/actionTypes";
 const initialStateUi = {
-    showModal : true
-}
+    showModal: false,
+};
 
-export const uiReducer = (state= initialStateUi, action) => {
+export const uiReducer = (state = initialStateUi, action) => {
     switch (action.type) {
-        case "SHOW_MODAL_CONTROL":
-            return { ...state, showModalAdd: action.payload };
+        case TOGGLE_MODAL_CONTROL:
+            return { ...state, showModal: action.payload };
         default:
             return state;
     }

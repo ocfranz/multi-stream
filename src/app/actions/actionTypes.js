@@ -1,0 +1,2 @@
+export const TOGGLE_MODAL_CONTROL = "TOGGLE_MODAL_CONTROL";
+export const ADD_STREAM = "ADD_STREAM";
