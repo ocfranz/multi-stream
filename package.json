@@ -39,6 +39,7 @@
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
     "@svgr/webpack": "^4.3.3",
+    "axios": "^0.20.0",
     "babel-loader": "^8.0.0",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-react-html-attrs": "^2.0.0",
@@ -69,9 +70,10 @@
     "server": "node app.js",
     "prod:build": "webpack --config ./webpack.prod.js",
     "start": "npm run server",
-    "dev:start": "concurrently \"npm run dev:build\" \"npm run dev:server\"",
+    "dev:start": "concurrently \"npm run dev:react\" \"npm run dev:server\"",
     "dev:server": "nodemon app.js --exec babel-node",
-    "dev:build": "webpack-dev-server --config ./webpack.dev.js --inline "
+    "dev:react": "webpack --watch --config ./webpack.dev.js --inline ",
+    "dev:react-hot": "webpack-dev-server --config ./webpack.dev.js --inline "
   },
   "keywords": [
     "stream",

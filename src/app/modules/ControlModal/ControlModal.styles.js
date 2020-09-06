@@ -27,6 +27,9 @@ const ModalContentWrapper = styled.div`
     padding: 20px 20px;
     color: #ffffff;
 `;
+const ModalSearchWrapper = styled.div`
+    position: relative;
+`;
 const ModalListWrapper = styled.div`
     padding: 20px 0px;
     color: #ffffff;
@@ -39,6 +42,7 @@ export {
     ModalStyled,
     ModalDialog,
     ModalContent,
+    ModalSearchWrapper,
     ModalContentWrapper,
     ModalListWrapper,
     ListWrapper,

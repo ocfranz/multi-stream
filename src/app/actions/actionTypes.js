@@ -1,2 +1,5 @@
 export const TOGGLE_MODAL_CONTROL = "TOGGLE_MODAL_CONTROL";
 export const ADD_STREAM = "ADD_STREAM";
+export const REMOVE_STREAM = "REMOVE_STREAM";
+export const HIDE_STREAM = "HIDE_STREAM";
+export const MUTE_STREAM = "MUTE_STREAM";
