@@ -1,11 +1,26 @@
-import React, { useEffect } from "react";
+import React from "react";
 import PropTypes from "prop-types";
+import { ADD_STREAM } from "../../actions/actionTypes";
+import { useDispatch } from "react-redux";
 import { AutocompleteStyled } from "./Autocomplete.styles";
 
-const Autocomplete = ({ list, show }) => {
-    useEffect(() => {
-        console.log(list);
-    });
+const Autocomplete = ({ list, show, handleOnClose }) => {
+    const dispatch = useDispatch();
+    const handleOnClick = (streamName) => {
+        const selectedStream = list.filter(
+            (item) => item.display_name == streamName
+        );
+        const newStream = {
+            name: selectedStream[0].display_name,
+            thumbnail_url: selectedStream[0].thumbnail_url,
+            is_live: selectedStream[0].is_live,
+            game_id: selectedStream[0].game_id,
+            is_hidden: false,
+            is_muted: false,
+        };
+        dispatch({ type: ADD_STREAM, payload: newStream });
+        handleOnClose();
+    };
     return (
         <AutocompleteStyled show={show}>
             {list.map((item, index) => {
@@ -17,6 +32,7 @@ const Autocomplete = ({ list, show }) => {
                             justifyItems: "center",
                             cursor: "pointer",
                         }}
+                        onClick={() => handleOnClick(item.display_name)}
                     >
                         <img
                             style={{ width: "40px", height: "40px" }}

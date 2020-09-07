@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
-import { ADD_STREAM } from "../../actions/actionTypes";
+import { ADD_STREAM, TOGGLE_MODAL_CONTROL } from "../../actions/actionTypes";
 import {
     ModalStyled,
     ModalDialog,
@@ -18,6 +18,7 @@ import Heading from "../../components/Heading";
 import Autocomplete from "../../components/Autocomplete";
 
 const Modal = ({ show }) => {
+    const modalContent = useRef(null);
     const [showAutocomplete, setShowAutocomplete] = useState(false);
     const [searchList, setSearchList] = useState([]);
     const [inputValue, setInputValue] = useState("");
@@ -51,10 +52,15 @@ const Modal = ({ show }) => {
         }
     };
 
+    const toggleAutocomplete = () => {
+        setShowAutocomplete(false);
+        setInputValue("");
+    };
+
     return (
         <ModalStyled show={show}>
             <ModalDialog>
-                <ModalContent>
+                <ModalContent ref={modalContent}>
                     <ModalContentWrapper>
                         <Heading children="Type a streamer name" />
                         <ModalSearchWrapper>
@@ -67,13 +73,18 @@ const Modal = ({ show }) => {
                             <Autocomplete
                                 list={searchList}
                                 show={showAutocomplete}
+                                handleOnClose={toggleAutocomplete}
                             />
                         </ModalSearchWrapper>
                         <ModalListWrapper>
                             <Heading children="List" />
                             <ListWrapper>
                                 {streams.map((item, index) => (
-                                    <ListItem name={item.name} key={index} />
+                                    <ListItem
+                                        name={item.name}
+                                        key={item.name}
+                                        avatarSrc={item.thumbnail_url}
+                                    />
                                 ))}
                             </ListWrapper>
                         </ModalListWrapper>

@@ -15,6 +15,7 @@ import SettingIcon from "./SettingIcon";
 const Sidebar = () => {
     const dispatch = useDispatch();
     const handleAddClick = () => {
+        console.log("sss");
         dispatch({ type: TOGGLE_MODAL_CONTROL, payload: true });
     };
     const handleSettingsClick = () => {};

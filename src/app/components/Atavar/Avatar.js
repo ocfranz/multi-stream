@@ -7,10 +7,7 @@ const Avatar = ({ src }) => {
         <>
             {src === undefined && <AvatarText>A</AvatarText>}
             {typeof src === "string" && (
-                <AvatarStyled
-                    src="https://randomuser.me/api/portraits/women/44.jpg"
-                    alt="Avatar user"
-                />
+                <AvatarStyled src={src} alt="Avatar user" />
             )}
         </>
     );
