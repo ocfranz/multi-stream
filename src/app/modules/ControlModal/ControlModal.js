@@ -106,6 +106,7 @@ const Modal = ({ show }) => {
                             <ListWrapper>
                                 {streams.map((item, index) => (
                                     <ListItem
+                                        item={item}
                                         name={item.name}
                                         key={item.name}
                                         avatarSrc={item.thumbnail_url}

@@ -15,12 +15,21 @@ export const streamReducer = (state = initialState, action) => {
         case HIDE_STREAM:
             return {
                 ...state,
-                stream: state.streams.map((item) =>
-                    item.name == action.payload ? { ...item, is_hidden: true } : item
+                streams: state.streams.map((item) =>
+                    item.name == action.payload
+                        ? { ...item, is_hidden: !item.is_hidden }
+                        : item
                 ),
             };
         case MUTE_STREAM:
-            break;
+            return {
+                ...state,
+                streams: state.streams.map((item) =>
+                    item.name == action.payload
+                        ? { ...item, is_muted: !item.is_muted }
+                        : item
+                ),
+            };
         case REMOVE_STREAM:
             return {
                 ...state,
