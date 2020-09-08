@@ -1,16 +1,30 @@
 import React from "react";
-
+import { TOGGLE_MODAL_CONTROL } from "../../actions/actionTypes";
 import {
     EmptyDisplayStyled,
-    EmptyImage,
     EmptyMessage,
+    EmptyWrapper,
+    EmptyButton,
 } from "./EmptyDisplay.styles";
-import CurvedArrow from "./curved_arrow.png";
+import { useDispatch } from "react-redux";
 const EmptyDisplay = () => {
+    const dispatch = useDispatch();
+    const handleOnClickEmptyButton = () => {
+        dispatch({ type: TOGGLE_MODAL_CONTROL, payload: true });
+    };
+
     return (
         <EmptyDisplayStyled>
-            <EmptyImage src={CurvedArrow} alt="curved arrow image" />
-            <EmptyMessage>Push plus button to add a stream</EmptyMessage>
+            <EmptyWrapper>
+                <div style={{}}>
+                    <div></div>
+                    <div></div>
+                </div>
+                <EmptyMessage>No streams yet</EmptyMessage>
+                <EmptyButton onClick={handleOnClickEmptyButton}>
+                    Add new stream
+                </EmptyButton>
+            </EmptyWrapper>
         </EmptyDisplayStyled>
     );
 };
