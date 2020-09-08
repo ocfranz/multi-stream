@@ -6,19 +6,19 @@ const PageWrapper = styled.div`
 `;
 
 const HomeStyled = styled.div`
-    height: calc(100vh - 60px);
+    height: calc(100vh - 70px);
 `;
 
 const HomeWrapper = styled.div`
-    display: flex;
-    flex-wrap: nowrap;
     width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+    position: relative;
 `;
 const HomeVideoBig = styled.div`
-    width: 70%;
-`;
-const HomeVideoList = styled.div`
-    width: 30%;
+    width: ${(props) => props.width};
+    height: ${(props) => props.height};
 `;
 
-export { PageWrapper, HomeStyled, HomeWrapper, HomeVideoBig, HomeVideoList };
+export { PageWrapper, HomeStyled, HomeWrapper, HomeVideoBig };

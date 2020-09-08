@@ -5,11 +5,9 @@ const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 
-const BUILD_DIR = path.resolve(__dirname, "src/public");
+const BUILD_DIR = path.resolve(__dirname, "public/js");
 const APP_DIR = path.resolve(__dirname, "src/app");
-const SCSS_DIR = path.resolve(__dirname, "src/scss");
 const SRC = path.resolve(__dirname, "src");
-const LIB = path.resolve(__dirname, "assets/lib");
 var config = {
   context: SRC,
   entry: {

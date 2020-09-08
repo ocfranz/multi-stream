@@ -6,6 +6,7 @@ const AvatarStyled = styled.img`
     height: 40px;
     margin: 0 auto;
     cursor: pointer;
+    border: ${(props) => (!props.active ? "none" : "2px solid #f55164")};
 `;
 const AvatarText = styled.div`
     border-radius: 50%;

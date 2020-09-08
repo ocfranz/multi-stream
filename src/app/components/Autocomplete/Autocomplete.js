@@ -1,25 +1,31 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { ADD_STREAM } from "../../actions/actionTypes";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { AutocompleteStyled } from "./Autocomplete.styles";
 
 const Autocomplete = ({ list, show, handleOnClose }) => {
     const dispatch = useDispatch();
+    const streams = useSelector((state) => state.streamReducer.streams);
     const handleOnClick = (streamName) => {
         const selectedStream = list.filter(
             (item) => item.display_name == streamName
         );
-        const newStream = {
-            name: selectedStream[0].display_name,
-            thumbnail_url: selectedStream[0].thumbnail_url,
-            is_live: selectedStream[0].is_live,
-            game_id: selectedStream[0].game_id,
-            is_hidden: false,
-            is_muted: false,
-        };
-        dispatch({ type: ADD_STREAM, payload: newStream });
-        handleOnClose();
+        const streamAdded = streams.filter((item) => item.name == streamName);
+        if (streamAdded.length == 0) {
+            const newStream = {
+                name: selectedStream[0].display_name,
+                thumbnail_url: selectedStream[0].thumbnail_url,
+                is_live: selectedStream[0].is_live,
+                game_id: selectedStream[0].game_id,
+                is_hidden: false,
+                is_muted: false,
+            };
+            dispatch({ type: ADD_STREAM, payload: newStream });
+            handleOnClose();
+        } else {
+            console.log("Stream already added");
+        }
     };
     return (
         <AutocompleteStyled show={show}>

@@ -18,7 +18,7 @@ const ModalContent = styled.div`
     height: 100%;
     background-color: #251b33;
     color: #000000;
-    width: 25%;
+    width: 30%;
     -webkit-box-shadow: -5px 1px 11px -1px rgba(49, 35, 67, 1);
     -moz-box-shadow: -5px 1px 11px -1px rgba(49, 35, 67, 1);
     box-shadow: -5px 1px 11px -1px rgba(49, 35, 67, 1);

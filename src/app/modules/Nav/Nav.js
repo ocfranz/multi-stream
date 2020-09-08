@@ -12,6 +12,7 @@ import NavItem from "../../components/NavItem";
 
 import AddIcon from "./AddIcon";
 import SettingIcon from "./SettingIcon";
+import ChatIcon from "./ChatIcon";
 const Sidebar = () => {
     const dispatch = useDispatch();
     const handleAddClick = () => {
@@ -30,6 +31,10 @@ const Sidebar = () => {
                     <NavItem
                         onClick={handleAddClick}
                         children={<AddIcon color="#dbdbdb" />}
+                    />
+                    <NavItem
+                        onClick={handleSettingsClick}
+                        children={<ChatIcon color="#dbdbdb" />}
                     />
                     <NavItem
                         onClick={handleSettingsClick}

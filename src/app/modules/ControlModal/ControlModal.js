@@ -25,6 +25,30 @@ const Modal = ({ show }) => {
     const dispatch = useDispatch();
     const streams = useSelector((state) => state.streamReducer.streams);
 
+    useEffect(() => {
+        if (show) {
+            document.addEventListener(
+                "click",
+                (event) => {
+                    handleClickOutside(event, modalContent);
+                },
+                true
+            );
+        }
+    });
+
+    const handleClickOutside = (event, ref) => {
+        if (!ref.current.contains(event.target)) {
+            console.log("click inside");
+            document.removeEventListener(
+                "click",
+                () => {},
+                true
+            );
+            closeModalControl();
+        }
+    };
+
     const handleStreamNameChange = (event) => {
         if (event.keyCode === 13) {
             const newStream = {
@@ -34,6 +58,7 @@ const Modal = ({ show }) => {
             };
             setInputValue("");
             dispatch({ type: ADD_STREAM, payload: newStream });
+            closeModalControl();
         }
 
         if (inputValue !== "") {
@@ -41,6 +66,7 @@ const Modal = ({ show }) => {
             axios
                 .get(`/api/stream/search/${inputValue}`)
                 .then((data) => {
+                    console.log(data.data.data)
                     setSearchList(data.data.data);
                 })
                 .catch((err) => {
@@ -50,6 +76,10 @@ const Modal = ({ show }) => {
             setShowAutocomplete(false);
             setSearchList([]);
         }
+    };
+
+    const closeModalControl = () => {
+        dispatch({ type: TOGGLE_MODAL_CONTROL, payload: false });
     };
 
     const toggleAutocomplete = () => {
@@ -84,6 +114,7 @@ const Modal = ({ show }) => {
                                         name={item.name}
                                         key={item.name}
                                         avatarSrc={item.thumbnail_url}
+                                        isLive={item.is_live}
                                     />
                                 ))}
                             </ListWrapper>

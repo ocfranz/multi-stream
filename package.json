@@ -73,7 +73,7 @@
     "dev:start": "concurrently \"npm run dev:react\" \"npm run dev:server\"",
     "dev:server": "nodemon app.js --exec babel-node",
     "dev:react": "webpack --watch --config ./webpack.dev.js --inline ",
-    "dev:react-hot": "webpack-dev-server --config ./webpack.dev.js --inline "
+    "dev:webpack-server": "webpack-dev-server --config ./webpack.dev.js --inline "
   },
   "keywords": [
     "stream",
