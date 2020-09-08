@@ -27,6 +27,7 @@ const Modal = ({ show }) => {
 
     useEffect(() => {
         if (show) {
+            document.getElementById("stream-name").focus();
             document.addEventListener(
                 "click",
                 (event) => {
@@ -39,12 +40,7 @@ const Modal = ({ show }) => {
 
     const handleClickOutside = (event, ref) => {
         if (!ref.current.contains(event.target)) {
-            console.log("click inside");
-            document.removeEventListener(
-                "click",
-                () => {},
-                true
-            );
+            document.removeEventListener("click", () => {}, true);
             closeModalControl();
         }
     };
@@ -66,7 +62,6 @@ const Modal = ({ show }) => {
             axios
                 .get(`/api/stream/search/${inputValue}`)
                 .then((data) => {
-                    console.log(data.data.data)
                     setSearchList(data.data.data);
                 })
                 .catch((err) => {

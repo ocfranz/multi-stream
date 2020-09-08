@@ -1,5 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { useDispatch } from "react-redux";
+
+import {
+    HIDE_STREAM,
+    REMOVE_STREAM,
+    MUTE_STREAM,
+} from "../../actions/actionTypes";
 import {
     ItemStyled,
     ItemDetail,
@@ -11,7 +18,20 @@ import MuteIcon from "./MuteIcon";
 import EyeOffIcon from "./EyeOffIcon";
 import Avatar from "../Atavar";
 import ButtonIcon from "../ButtonIcon";
+
 const ListItem = ({ avatarSrc, name, isLive }) => {
+    const dispatch = useDispatch();
+
+    const handleOnClickMute = () => {
+        dispatch({ type: MUTE_STREAM, payload: name });
+    };
+    const handleOnClickHide = () => {
+        dispatch({ type: HIDE_STREAM, payload: name });
+    };
+
+    const handleOnClickDelete = () => {
+        dispatch({ type: REMOVE_STREAM, payload: name });
+    };
     return (
         <ItemStyled>
             <ItemDetail>
@@ -19,9 +39,18 @@ const ListItem = ({ avatarSrc, name, isLive }) => {
                 <ItemName>{name}</ItemName>
             </ItemDetail>
             <ItemActions>
-                <ButtonIcon children={<EyeOffIcon color="#ffffff" />} />
-                <ButtonIcon children={<MuteIcon color="#ffffff" />} />
-                <ButtonIcon children={<DeleteIcon color="#ffffff" />} />
+                <ButtonIcon
+                    children={<EyeOffIcon color="#ffffff" />}
+                    onClick={handleOnClickHide}
+                />
+                <ButtonIcon
+                    children={<MuteIcon color="#ffffff" />}
+                    onClick={handleOnClickMute}
+                />
+                <ButtonIcon
+                    children={<DeleteIcon color="#ffffff" />}
+                    onClick={handleOnClickDelete}
+                />
             </ItemActions>
         </ItemStyled>
     );

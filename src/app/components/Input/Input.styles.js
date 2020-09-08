@@ -8,7 +8,8 @@ const InputStyled = styled.input`
     outline: none;
     border: none;
     background-color: #4f386c;
-    color: rgba(255,255,255,0.8);
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: bold;
     &:focus {
         box-shadow: none;
         outline: none;
