@@ -1,5 +1,5 @@
 import React from "react";
-import { TOGGLE_MODAL_CONTROL } from "../../actions/actionTypes";
+import { TOGGLE_MODAL_CONTROL } from "../../actions/types";
 import {
     EmptyDisplayStyled,
     EmptyMessage,

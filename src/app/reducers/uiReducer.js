@@ -1,4 +1,4 @@
-import { TOGGLE_MODAL_CONTROL } from "../actions/actionTypes";
+import { TOGGLE_MODAL_CONTROL } from "../actions/types";
 const initialStateUi = {
     showModal: false,
 };

@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { ADD_STREAM } from "../../actions/actionTypes";
+import { ADD_STREAM } from "../../actions/types";
 import { useSelector, useDispatch } from "react-redux";
 import { AutocompleteStyled } from "./Autocomplete.styles";
 

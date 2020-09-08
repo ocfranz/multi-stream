@@ -6,7 +6,7 @@ import {
     NavHeading,
     NavItemsWrapper,
 } from "./Nav.styles";
-import { TOGGLE_MODAL_CONTROL } from "../../actions/actionTypes";
+import { TOGGLE_MODAL_CONTROL } from "../../actions/types";
 import Avatar from "../../components/Atavar";
 import NavItem from "../../components/NavItem";
 

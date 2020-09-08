@@ -6,7 +6,7 @@ import {
     HIDE_STREAM,
     REMOVE_STREAM,
     MUTE_STREAM,
-} from "../../actions/actionTypes";
+} from "../../actions/types";
 import {
     ItemStyled,
     ItemDetail,

@@ -30,26 +30,32 @@ const Home = ({}) => {
                             <HomeWrapper>
                                 {streams.length == 0 && <EmptyDisplay />}
                                 {streams.map((item) => {
-                                    return (
-                                        <HomeVideoBig
-                                            key={item.name}
-                                            width={`${
-                                                streams.length === 1 ? 100 : 50
-                                            }%`}
-                                            height={`${
-                                                streams.length === 1 ? 100 : 50
-                                            }%`}
-                                        >
-                                            <iframe
-                                                src={`https://player.twitch.tv/?channel=${item.name}&parent=localhost`}
-                                                height="100%"
-                                                width="100%"
-                                                frameBorder={0}
-                                                scrolling="no"
-                                                allowFullScreen={true}
-                                            ></iframe>
-                                        </HomeVideoBig>
-                                    );
+                                    if (!item.is_hidden) {
+                                        return (
+                                            <HomeVideoBig
+                                                key={item.name}
+                                                width={`${
+                                                    streams.length === 1
+                                                        ? 100
+                                                        : 50
+                                                }%`}
+                                                height={`${
+                                                    streams.length === 1
+                                                        ? 100
+                                                        : 50
+                                                }%`}
+                                            >
+                                                <iframe
+                                                    src={`https://player.twitch.tv/?channel=${item.name}&parent=localhost`}
+                                                    height="100%"
+                                                    width="100%"
+                                                    frameBorder={0}
+                                                    scrolling="no"
+                                                    allowFullScreen={true}
+                                                ></iframe>
+                                            </HomeVideoBig>
+                                        );
+                                    }
                                 })}
                             </HomeWrapper>
                         }

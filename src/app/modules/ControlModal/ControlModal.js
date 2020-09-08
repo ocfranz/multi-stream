@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
-import { ADD_STREAM, TOGGLE_MODAL_CONTROL } from "../../actions/actionTypes";
+import { ADD_STREAM, TOGGLE_MODAL_CONTROL } from "../../actions/types";
 import {
     ModalStyled,
     ModalDialog,

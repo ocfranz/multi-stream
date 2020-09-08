@@ -3,7 +3,7 @@ import {
     HIDE_STREAM,
     MUTE_STREAM,
     REMOVE_STREAM,
-} from "../actions/actionTypes";
+} from "../actions/types";
 const initialState = {
     streams: [],
 };
@@ -13,7 +13,12 @@ export const streamReducer = (state = initialState, action) => {
         case ADD_STREAM:
             return { ...state, streams: [...state.streams, action.payload] };
         case HIDE_STREAM:
-            break;
+            return {
+                ...state,
+                stream: state.streams.map((item) =>
+                    item.name == action.payload ? { ...item, is_hidden: true } : item
+                ),
+            };
         case MUTE_STREAM:
             break;
         case REMOVE_STREAM:
