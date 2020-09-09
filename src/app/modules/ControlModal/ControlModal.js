@@ -2,7 +2,11 @@ import React, { useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
-import { ADD_STREAM, TOGGLE_MODAL_CONTROL } from "../../actions/types";
+import {
+    ADD_STREAM,
+    TOGGLE_MODAL_CONTROL,
+    MUTE_ALL_STREAMS,
+} from "../../actions/types";
 import {
     ModalStyled,
     ModalDialog,
@@ -11,6 +15,8 @@ import {
     ModalSearchWrapper,
     ModalListWrapper,
     ListWrapper,
+    MuteAllButton,
+    ListHeader,
 } from "./ControlModal.styles";
 import Input from "../../components/Input";
 import ListItem from "../../components/ListItem";
@@ -46,17 +52,6 @@ const Modal = ({ show }) => {
     };
 
     const handleStreamNameChange = (event) => {
-        if (event.keyCode === 13) {
-            const newStream = {
-                name: inputValue,
-                muted: false,
-                hidden: false,
-            };
-            setInputValue("");
-            dispatch({ type: ADD_STREAM, payload: newStream });
-            closeModalControl();
-        }
-
         if (inputValue !== "") {
             setShowAutocomplete(true);
             axios
@@ -71,6 +66,9 @@ const Modal = ({ show }) => {
             setShowAutocomplete(false);
             setSearchList([]);
         }
+    };
+    const handleMuteAll = () => {
+        dispatch({ type: MUTE_ALL_STREAMS, payload: true });
     };
 
     const closeModalControl = () => {
@@ -102,7 +100,12 @@ const Modal = ({ show }) => {
                             />
                         </ModalSearchWrapper>
                         <ModalListWrapper>
-                            <Heading children="List" />
+                            <ListHeader>
+                                <Heading children="List" />
+                                <MuteAllButton onClick={handleMuteAll}>
+                                    Mute all
+                                </MuteAllButton>
+                            </ListHeader>
                             <ListWrapper>
                                 {streams.map((item, index) => (
                                     <ListItem

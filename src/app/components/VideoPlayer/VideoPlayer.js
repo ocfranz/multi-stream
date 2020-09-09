@@ -26,7 +26,7 @@ const VideoPlayer = ({ streamName, muted }) => {
 
 VideoPlayer.propTypes = {
     streamName: PropTypes.string.isRequired,
-    muted: PropTypes.string.isRequired,
+    muted: PropTypes.bool.isRequired,
 };
 
 export default VideoPlayer;

@@ -9,6 +9,7 @@ const AutocompleteStyled = styled.div`
     color: #000000;
     flex-wrap: wrap;
     flex-direction: column;
+    z-index: 99;
 `;
 
 export { AutocompleteStyled };

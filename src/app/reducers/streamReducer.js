@@ -3,6 +3,7 @@ import {
     HIDE_STREAM,
     MUTE_STREAM,
     REMOVE_STREAM,
+    MUTE_ALL_STREAMS,
 } from "../actions/types";
 const initialState = {
     streams: [],
@@ -36,6 +37,14 @@ export const streamReducer = (state = initialState, action) => {
                 streams: state.streams.filter(
                     (item) => item.name != action.payload
                 ),
+            };
+        case MUTE_ALL_STREAMS:
+            return {
+                ...state,
+                streams: state.streams.map((item) => ({
+                    ...item,
+                    is_muted: action.payload,
+                })),
             };
         default:
             return state;

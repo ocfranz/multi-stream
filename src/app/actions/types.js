@@ -3,3 +3,4 @@ export const ADD_STREAM = "ADD_STREAM";
 export const REMOVE_STREAM = "REMOVE_STREAM";
 export const HIDE_STREAM = "HIDE_STREAM";
 export const MUTE_STREAM = "MUTE_STREAM";
+export const MUTE_ALL_STREAMS = "MUTE_ALL_STREAMS";

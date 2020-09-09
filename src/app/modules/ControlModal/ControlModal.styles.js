@@ -38,6 +38,21 @@ const ListWrapper = styled.div`
     display: flex;
     flex-direction: column;
 `;
+const ListHeader = styled.div`
+    display: flex;
+    align-items: center;
+    padding-bottom: 15px;
+    justify-content: space-between;
+`;
+const MuteAllButton = styled.div`
+    font-size: 14px;
+    opacity: 0.7;
+    background-color: #4f386c;
+    padding: 5px;
+    border-radius: 20%;
+    font-weight: normal;
+    cursor: pointer;
+`;
 export {
     ModalStyled,
     ModalDialog,
@@ -46,4 +61,6 @@ export {
     ModalContentWrapper,
     ModalListWrapper,
     ListWrapper,
+    ListHeader,
+    MuteAllButton,
 };
