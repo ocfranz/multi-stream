@@ -22,6 +22,10 @@ const ListItem = ({ item }) => {
         let dispatchType = "";
         switch (type) {
             case "mute":
+                console.log(document.getElementById(item.name));
+                document
+                    .getElementById(item.name)
+                    .dispatchEvent(new KeyboardEvent("keydown", { key: "77" }));
                 dispatchType = MUTE_STREAM;
                 break;
             case "hide":

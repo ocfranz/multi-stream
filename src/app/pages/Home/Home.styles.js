@@ -19,6 +19,7 @@ const HomeWrapper = styled.div`
 const HomeVideoBig = styled.div`
     width: ${(props) => props.width};
     height: ${(props) => props.height};
+    visibility: ${(props) => (props.hidden ? "hidden" : "visible")};
 `;
 
 export { PageWrapper, HomeStyled, HomeWrapper, HomeVideoBig };

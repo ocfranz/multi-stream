@@ -19,7 +19,6 @@ const Home = ({}) => {
     const visibleModalControl = useSelector(
         (state) => state.uiReducer.showModal
     );
-
     return (
         <PageWrapper>
             <PageContent>
@@ -30,10 +29,11 @@ const Home = ({}) => {
                             <HomeWrapper>
                                 {streams.length == 0 && <EmptyDisplay />}
                                 {streams.map((item) => {
-                                    if (!item.is_hidden) {
+                                    if (item.is_live) {
                                         return (
                                             <HomeVideoBig
                                                 key={item.name}
+                                                hidden={item.is_hidden}
                                                 width={`${
                                                     streams.length === 1
                                                         ? 100
@@ -45,14 +45,10 @@ const Home = ({}) => {
                                                         : 50
                                                 }%`}
                                             >
-                                                <iframe
-                                                    src={`https://player.twitch.tv/?channel=${item.name}&parent=localhost`}
-                                                    height="100%"
-                                                    width="100%"
-                                                    frameBorder={0}
-                                                    scrolling="no"
-                                                    allowFullScreen={true}
-                                                ></iframe>
+                                                <VideoPlayer
+                                                    streamName={item.name}
+                                                    muted={item.is_muted}
+                                                />
                                             </HomeVideoBig>
                                         );
                                     }

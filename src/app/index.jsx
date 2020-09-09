@@ -14,6 +14,7 @@ render(
                     type="text/css"
                     href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap"
                 />
+                <script src="https://embed.twitch.tv/embed/v1.js"></script>
             </Helmet>
             <Provider store={store}>
                 <GlobalStyles />
