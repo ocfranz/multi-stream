@@ -11,10 +11,10 @@ const HomeStyled = styled.div`
 
 const HomeWrapper = styled.div`
     width: 100%;
-    display: flex;
-    flex-wrap: wrap;
     height: 100%;
     position: relative;
+    display: flex;
+    flex-wrap: wrap;
 `;
 const HomeVideoBig = styled.div`
     width: ${(props) => props.width};

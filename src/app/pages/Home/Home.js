@@ -19,6 +19,55 @@ const Home = ({}) => {
     const visibleModalControl = useSelector(
         (state) => state.uiReducer.showModal
     );
+    const drawStreams = (list) => {
+        const liveStream = list
+            .filter((item) => item.is_live)
+            .filter((item) => !item.is_hidden);
+        let width = 0;
+        let height = 0;
+        switch (liveStream.length) {
+            case 1:
+                width = 100;
+                height = 100;
+                break;
+            case 2:
+                width = 50;
+                height = 100;
+                break;
+            case 3:
+            case 4:
+                width = 50;
+                height = 50;
+                break;
+            case 5:
+            case 6:
+                width = 100 / 3;
+                height = 100 / 2;
+                break;
+            default:
+                width = 100 / 4;
+                height = 100 / 2;
+        }
+
+        const templates = streams.map((item) => {
+            if (item.is_live) {
+                return (
+                    <HomeVideoBig
+                        key={item.name}
+                        hidden={item.is_hidden}
+                        width={`${width}%`}
+                        height={`${height}%`}
+                    >
+                        <VideoPlayer
+                            streamName={item.name}
+                            muted={item.is_muted}
+                        />
+                    </HomeVideoBig>
+                );
+            }
+        });
+        return templates;
+    };
     return (
         <PageWrapper>
             <PageContent>
@@ -28,31 +77,7 @@ const Home = ({}) => {
                         children={
                             <HomeWrapper>
                                 {streams.length == 0 && <EmptyDisplay />}
-                                {streams.map((item) => {
-                                    if (item.is_live) {
-                                        return (
-                                            <HomeVideoBig
-                                                key={item.name}
-                                                hidden={item.is_hidden}
-                                                width={`${
-                                                    streams.length === 1
-                                                        ? 100
-                                                        : 50
-                                                }%`}
-                                                height={`${
-                                                    streams.length === 1
-                                                        ? 100
-                                                        : 50
-                                                }%`}
-                                            >
-                                                <VideoPlayer
-                                                    streamName={item.name}
-                                                    muted={item.is_muted}
-                                                />
-                                            </HomeVideoBig>
-                                        );
-                                    }
-                                })}
+                                {drawStreams(streams)}
                             </HomeWrapper>
                         }
                     />
