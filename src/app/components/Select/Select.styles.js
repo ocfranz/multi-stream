@@ -19,6 +19,7 @@ const SelectList = styled.div`
 `;
 const SelectItem = styled.div`
   padding: 10px 20px;
+  cursor: pointer;
 `;
 
 export { SelectStyled, SelectButton, SelectList, SelectItem };

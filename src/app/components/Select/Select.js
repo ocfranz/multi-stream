@@ -11,12 +11,23 @@ const Select = ({ list }) => {
   const handleClickHeading = () => {
     setShowItems(!showItems);
   };
+
+  const handleOnClickItem = (name) => {
+    console.log(name);
+  };
   return (
     <SelectStyled>
       <SelectButton onClick={handleClickHeading}>Select a stream</SelectButton>
       <SelectList show={showItems}>
         {list.map((item) => {
-          return <SelectItem>name</SelectItem>;
+          return (
+            <SelectItem
+              key={item.name}
+              onClick={() => handleOnClickItem(item.name)}
+            >
+              {item.name}
+            </SelectItem>
+          );
         })}
       </SelectList>
     </SelectStyled>
