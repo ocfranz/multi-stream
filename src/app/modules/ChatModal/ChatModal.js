@@ -10,6 +10,7 @@ import {
 } from "../ControlModal/ControlModal.styles";
 import { ChatModalWrapper, ChatSelectHeading } from "./ChatModal.styles";
 import Select from "../../components/Select";
+import EmbeddedChat from '../../components/EmbeddedChat'
 const ChatModal = ({ show }) => {
   const chatModalRef = useRef(null);
   const streams = useSelector((state) => state.streamReducer.streams);
@@ -45,7 +46,6 @@ const ChatModal = ({ show }) => {
         selectIndex = index;
       }
     });
-    console.log(selectIndex);
     setIndexChat(selectIndex);
   };
   return (
@@ -55,16 +55,9 @@ const ChatModal = ({ show }) => {
           <ChatModalWrapper>
             <Select list={streams} onSelect={handleOnSelect} />
             {streams.map((item, index) => {
-              if (item.is_live && index == indexChat) {
+              if (item.is_live) {
                 return (
-                  <iframe
-                    key={item.name}
-                    frameBorder="0"
-                    scrolling="no"
-                    src={`https://www.twitch.tv/embed/${item.name}/chat?parent=localhost&darkpopout=true`}
-                    height="100%"
-                    width="100%"
-                  ></iframe>
+                  <EmbeddedChat key={`chat__${item.name}`} show={index==indexChat} streamName={item.name}/>
                 );
               }
             })}
