@@ -6,7 +6,7 @@ import {
   SelectList,
   SelectItem,
 } from "./Select.styles";
-const Select = ({ list }) => {
+const Select = ({ list, onSelect }) => {
   const [showItems, setShowItems] = useState(false);
   const handleClickHeading = () => {
     setShowItems(!showItems);
@@ -14,6 +14,7 @@ const Select = ({ list }) => {
 
   const handleOnClickItem = (name) => {
     console.log(name);
+    onSelect(name);
   };
   return (
     <SelectStyled>
