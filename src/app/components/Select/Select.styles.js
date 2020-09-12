@@ -9,6 +9,9 @@ const SelectButton = styled.div`
   padding: 10px;
   border-radius: 5px;
   cursor: pointer;
+  font-weight: bold;
+  text-transform: capitalize;
+  text-align: center;
 `;
 const SelectList = styled.div`
   display: ${(props) => (props.show ? "block" : "none")};
