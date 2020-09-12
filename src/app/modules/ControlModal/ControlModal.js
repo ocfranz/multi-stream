@@ -1,29 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
-import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  ADD_STREAM,
-  TOGGLE_MODAL_CONTROL,
-  MUTE_ALL_STREAMS,
-} from "../../actions/types";
-import {
-  ModalStyled,
-  ModalDialog,
-  ModalContent,
-  ModalContentWrapper,
-  ModalSearchWrapper,
-  ModalListWrapper,
-  ListWrapper,
-  MuteAllButton,
-  ListHeader,
-} from "./ControlModal.styles";
+import * as types from "../../actions/types";
+import * as styles from "./ControlModal.styles";
 import Input from "../../components/Input";
 import ListItem from "../../components/ListItem";
 import Heading from "../../components/Heading";
 import Autocomplete from "../../components/Autocomplete";
 import { getStreamsByKeyword } from "../../helpers/getStreamsByKeyword";
-import useFetchStream from "../../hooks/useFetchStreams";
 
 const Modal = ({ show }) => {
   const modalContent = useRef(null);
@@ -63,11 +47,11 @@ const Modal = ({ show }) => {
     }
   };
   const handleMuteAll = () => {
-    dispatch({ type: MUTE_ALL_STREAMS, payload: true });
+    dispatch({ type: types.MUTE_ALL_STREAMS, payload: true });
   };
 
   const closeModalControl = () => {
-    dispatch({ type: TOGGLE_MODAL_CONTROL, payload: false });
+    dispatch({ type: types.TOGGLE_MODAL_CONTROL, payload: false });
   };
 
   const toggleAutocomplete = () => {
@@ -76,12 +60,12 @@ const Modal = ({ show }) => {
   };
 
   return (
-    <ModalStyled show={show}>
-      <ModalDialog>
-        <ModalContent ref={modalContent}>
-          <ModalContentWrapper>
+    <styles.ModalStyled show={show}>
+      <styles.ModalDialog>
+        <styles.ModalContent ref={modalContent}>
+          <styles.ModalContentWrapper>
             <Heading children="Type a streamer name" />
-            <ModalSearchWrapper>
+            <styles.ModalSearchWrapper>
               <Input
                 id="stream-name"
                 value={inputValue}
@@ -93,13 +77,15 @@ const Modal = ({ show }) => {
                 show={showAutocomplete}
                 handleOnClose={toggleAutocomplete}
               />
-            </ModalSearchWrapper>
-            <ModalListWrapper>
-              <ListHeader>
+            </styles.ModalSearchWrapper>
+            <styles.ModalListWrapper>
+              <styles.ListHeader>
                 <Heading children="List" />
-                <MuteAllButton onClick={handleMuteAll}>Mute all</MuteAllButton>
-              </ListHeader>
-              <ListWrapper>
+                <styles.MuteAllButton onClick={handleMuteAll}>
+                  Mute all
+                </styles.MuteAllButton>
+              </styles.ListHeader>
+              <styles.ListWrapper>
                 {streams.map((item, index) => (
                   <ListItem
                     item={item}
@@ -109,12 +95,12 @@ const Modal = ({ show }) => {
                     isLive={item.is_live}
                   />
                 ))}
-              </ListWrapper>
-            </ModalListWrapper>
-          </ModalContentWrapper>
-        </ModalContent>
-      </ModalDialog>
-    </ModalStyled>
+              </styles.ListWrapper>
+            </styles.ModalListWrapper>
+          </styles.ModalContentWrapper>
+        </styles.ModalContent>
+      </styles.ModalDialog>
+    </styles.ModalStyled>
   );
 };
 Modal.defaultProps = {

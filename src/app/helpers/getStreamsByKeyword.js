@@ -5,7 +5,6 @@ import Axios from "axios";
  * @param {function} _callback
  */
 const getStreamsByKeyword = (keyword, _callback) => {
-  console.log(keyword);
   Axios.get(`/api/stream/search/${keyword}`)
     .then((data) => {
       _callback(data.data.data);
