@@ -18,7 +18,7 @@
     "start-client": "react-scripts start",
     "build-client": "react-scripts build",
     "test": "react-scripts test",
-    "start": "npm run server",
+    "start": "npm run build-client && npm run server",
     "dev:start": "nodemon app.js  --exec babel-node",
     "server": "node app.js"
   },
