@@ -4,7 +4,6 @@
   "description": "Multistream viewer",
   "main": "app.js",
   "dependencies": {
-    "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "concurrently": "^5.3.0",
     "cookie-parser": "^1.4.3",
@@ -72,14 +71,14 @@
     "webpack-stream": "^5.2.1"
   },
   "scripts": {
-    "server": "node app.js",
+    "server": "node ./server/app.js",
     "prod:build": "webpack --config ./webpack.prod.js",
     "start": "npm run server",
     "dev:start": "concurrently \"npm run dev:react\" \"npm run dev:server\"",
-    "dev:server": "nodemon app.js --exec babel-node",
+    "dev:server": "nodemon ./server/app.js --exec babel-node",
     "dev:react": "webpack --watch --config ./webpack.dev.js --inline ",
     "dev:webpack-server": "webpack-dev-server --config ./webpack.dev.js --inline",
-    "test" : "jest"
+    "test": "jest"
   },
   "keywords": [
     "stream",
@@ -87,6 +86,5 @@
     "facebook",
     "gaming"
   ],
-  "author": "ocfranz",
-  "license": "UNLICENSED"
+  "author": "ocfranz"
 }
