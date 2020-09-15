@@ -1,16 +1,17 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-
-const Home = props => {
+import React from "react";
+import PropTypes from "prop-types";
+import LandingHeader from "../../modules/LandingHeader";
+const Home = (props) => {
   return (
     <div>
-      HomeF
+      <LandingHeader />
+      <div>
+        <div></div>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-Home.propTypes = {
+Home.propTypes = {};
 
-}
-
-export default Home
+export default Home;

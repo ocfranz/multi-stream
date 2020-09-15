@@ -1,8 +1,13 @@
 import React from "react";
-import { BrandStyled } from "./Brand.styles";
-
+import { BrandStyled, LogoStyled, NameStyled } from "./Brand.styles";
+import Logo from "./logo.png";
 const Brand = () => {
-    return <BrandStyled>Multi Stream</BrandStyled>;
+  return (
+    <BrandStyled>
+      <LogoStyled src={Logo} />
+      <NameStyled>Owl stream</NameStyled>
+    </BrandStyled>
+  );
 };
 
 export default Brand;

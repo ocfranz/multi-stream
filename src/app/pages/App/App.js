@@ -11,7 +11,7 @@ import { PageContent } from "../../components/Page/Page.styles";
 import Grid from "../../components/Grid";
 import VideoPlayer from "../../components/VideoPlayer";
 import EmptyDisplay from "../../components/EmptyDisplay";
-import Header from "../../modules/Header";
+import Header from "../../modules/AppHeader";
 import Nav from "../../modules/Nav";
 import ControlModal from "../../modules/ControlModal";
 import ChatModal from "../../modules/ChatModal";

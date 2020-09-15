@@ -1,9 +1,16 @@
 import styled from "styled-components";
 
-const BrandStyled = styled.span`
-    font-size: 20px;
-    opacity: 0.8;
-    cursor: pointer;
+const BrandStyled = styled.div`
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+`;
+const LogoStyled = styled.img`
+  width: 50px;
 `;
 
-export { BrandStyled };
+const NameStyled = styled.div`
+  padding-left: 10px;
+  font-size: 20px;
+`;
+export { BrandStyled, LogoStyled, NameStyled };
