@@ -24,7 +24,7 @@ const LandingHero = (props) => {
         />
       </HeroCallAction>
       <HeroImageWrapper>
-        <HeroImage src={Image} alt="Hero image owl stream" />
+        <HeroImage src={Image} alt="Hero image owl stream" alt="hero images" />
       </HeroImageWrapper>
     </LandingHeroStyled>
   );
