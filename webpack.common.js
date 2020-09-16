@@ -4,11 +4,13 @@ const path = require("path");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const BUILD_DIR = path.resolve(__dirname, "build");
 const APP_DIR = path.resolve(__dirname, "src/app");
 const SRC = path.resolve(__dirname, "src");
 const HTML_TEMPLATE_DIR = path.resolve(__dirname, "public/index.html");
+const PUBLIC_DIR = path.resolve(__dirname, "public");
 var config = {
   entry: {
     client: [`${APP_DIR}/index.jsx`],
@@ -82,6 +84,17 @@ var config = {
     }),
     new webpack.ProvidePlugin({}),
     new CleanWebpackPlugin(),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: PUBLIC_DIR,
+          globOptions: {
+            ignore: [PUBLIC_DIR+'index.html'],
+          },
+          to: BUILD_DIR,
+        }
+      ]
+    })
   ],
 };
 
