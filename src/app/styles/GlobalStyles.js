@@ -12,8 +12,12 @@ const GlobalStyles = createGlobalStyle`
         background-color : #3B2A50;
         color : #FFFFFF;
         overflow : hidden;
+        
     }
-
+    #app{
+      height: 100%;
+      width: 100%;
+    }
     *{
         font-family: 'DM Sans', sans-serif;
     } 

@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { HomeStyled } from "./Home.styles";
 import SimpleGrid from "../../components/SimpleGrid";
 import LandingHeader from "../../modules/LandingHeader";
