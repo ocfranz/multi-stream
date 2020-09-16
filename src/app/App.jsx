@@ -1,4 +1,4 @@
-import React from "react";
+import React, { lazy } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -6,7 +6,7 @@ import {
   Redirect,
 } from "react-router-dom";
 
-import PageApp from "./pages/App";
+const PageApp = lazy(()=> import("./pages/App"));
 import PageHome from "./pages/Home";
 import Page404 from "./pages/404";
 const App = ({}) => {
