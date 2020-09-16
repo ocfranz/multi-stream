@@ -4,7 +4,7 @@ import Logo from "../../../../assets/images/logo-big.png";
 const Brand = () => {
   return (
     <BrandStyled>
-      <LogoStyled src={Logo} />
+      <LogoStyled src={Logo} alt="owl stream logo" />
       <NameStyled>Owl stream</NameStyled>
     </BrandStyled>
   );
