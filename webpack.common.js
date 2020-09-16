@@ -1,22 +1,23 @@
 const webpack = require("webpack");
 const path = require("path");
 //const debug = require("debug");
-const HtmlWebPackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+const HtmlWebPackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
-const BUILD_DIR = path.resolve(__dirname, "public/js");
+const BUILD_DIR = path.resolve(__dirname, "build");
 const APP_DIR = path.resolve(__dirname, "src/app");
 const SRC = path.resolve(__dirname, "src");
+const HTML_TEMPLATE_DIR = path.resolve(__dirname, "public/index.html");
 var config = {
-  context: SRC,
   entry: {
-    'client': [`${APP_DIR}/index.jsx`],
+    client: [`${APP_DIR}/index.jsx`],
   },
   output: {
     path: BUILD_DIR,
-    filename: '[name].min.js',
-    chunkFilename: '[name].min.js',
+    filename: "static/js/[name].[hash:8].min.js",
+    chunkFilename: "static/js/[name].[hash:8].min.js",
+    publicPath: "/",
   },
   module: {
     rules: [
@@ -24,7 +25,7 @@ var config = {
         test: /\.html$/,
         use: [
           {
-            loader: 'html-loader',
+            loader: "html-loader",
             options: {
               minimize: true,
             },
@@ -35,9 +36,8 @@ var config = {
         test: /\.(jpe?g|png|gif)$/i, //to support eg. background-image property
         loader: "file-loader",
         query: {
-          name: "[path][name].[ext]",
-          outputPath: "../"
-        }
+          name: "static/media/[path][name].[ext]",
+        },
       },
       {
         test: /\.(woff(2)?|ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, //to support @font-face rule
@@ -45,8 +45,8 @@ var config = {
         query: {
           limit: "10000",
           name: "[path][name].[ext]",
-          outputPath: "../"
-        }
+          outputPath: "../",
+        },
       },
       {
         test: /\.(js|jsx)$/,
@@ -58,32 +58,30 @@ var config = {
           plugins: [
             "react-html-attrs",
             ["@babel/plugin-proposal-decorators", { legacy: true }],
-            ["@babel/plugin-proposal-class-properties", { loose: true }]
-          ]
-        }
+            ["@babel/plugin-proposal-class-properties", { loose: true }],
+          ],
+        },
       },
       {
         test: /\.(css|scss)$/,
-        use: [ MiniCssExtractPlugin.loader,"css-loader", "sass-loader"]
+        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
       },
-    ]
+    ],
   },
-  resolve :{
-    extensions: ['*', '.js', '.jsx'],
-    alias: {
-      
-    },
-    modules: [ SRC, 'node_modules'],
+  resolve: {
+    extensions: ["*", ".js", ".jsx"],
+    alias: {},
+    modules: [SRC, "node_modules"],
   },
   plugins: [
-    
     new MiniCssExtractPlugin({
-      filename: '[name].min.css',
+      filename: "[name].min.css",
     }),
-    new webpack.ProvidePlugin({
-     
+    new HtmlWebPackPlugin({
+      template: HTML_TEMPLATE_DIR,
     }),
-    new CleanWebpackPlugin()
+    new webpack.ProvidePlugin({}),
+    new CleanWebpackPlugin(),
   ],
 };
 

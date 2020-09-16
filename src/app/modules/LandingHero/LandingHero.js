@@ -1,11 +1,17 @@
 import React from "react";
-import { LandingHeroStyled, HeroMessage } from "./LandingHero.styles";
+import {
+  LandingHeroStyled,
+  HeroMessage,
+  HeroImage,
+  HeroCallAction,
+  HeroImageWrapper,
+} from "./LandingHero.styles";
 import Button from "../../components/Button";
-import HeroImage from "./hero_image.png";
+import Image from "../../../../assets/images/hero_image.png";
 const LandingHero = (props) => {
   return (
     <LandingHeroStyled>
-      <div style={{ marginTop: "200px" }}>
+      <HeroCallAction>
         <HeroMessage>Watch all your favorite streams from just a</HeroMessage>
         <Button
           children="Try now"
@@ -13,10 +19,10 @@ const LandingHero = (props) => {
           big={true}
           secondary={true}
         />
-      </div>
-      <div>
-        <img src={HeroImage} alt="Hero image owl stream" />
-      </div>
+      </HeroCallAction>
+      <HeroImageWrapper>
+        <HeroImage src={Image} alt="Hero image owl stream" />
+      </HeroImageWrapper>
     </LandingHeroStyled>
   );
 };

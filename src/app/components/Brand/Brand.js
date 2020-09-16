@@ -1,6 +1,6 @@
 import React from "react";
 import { BrandStyled, LogoStyled, NameStyled } from "./Brand.styles";
-import Logo from "./logo.png";
+import Logo from "../../../../assets/images/logo.png";
 const Brand = () => {
   return (
     <BrandStyled>
